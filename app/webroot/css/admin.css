@@ -1,0 +1,223 @@
+*, all {
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    border: 0px;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+body {
+    background: url(/img/top.jpg) repeat-x 0px 0px;
+    text-align: center;
+
+    font-family: Arial, FreeSans, sans-serif;
+    font-size: 80%;
+    color: #444444;
+}
+
+a {
+    color: #3366CC;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #111111;
+}
+
+h1 {
+    text-align: left;
+    font-size: 1.8em;
+    margin: 0px 0px 20px 260px;
+}
+
+h2 {
+    text-align: left;
+    font-size: 1.4em;
+    margin: 40px 0px 20px 0px;
+    color: #999999;
+}
+
+#wrapper {
+    position: relative;
+    margin: 0px auto;
+    overflow: hidden;
+    width: 960px;
+    text-align: left;
+}
+
+#top {
+    position: relative;
+    height: 120px;
+}
+
+#top strong {
+    color: #ffffff;
+    font-size: 1.6em;
+    font-weight: bold;
+    display: block;
+    position: relative;
+    margin: 20px 0px 10px 0px;
+}
+
+#top span {
+    color: #dddddd;
+    font-size: 1.3em;
+    font-weight: bold;
+    display: block;
+    position: relative;
+}
+
+#top #breadcrumb {
+    position: absolute;
+    top: 85px;
+    left: 0px;
+    font-size: 0.8em;
+}
+
+#top #breadcrumb a {
+    
+}
+
+#top #welcome {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    display: inline-block;
+    color: #aaaaaa;
+}
+
+#top #welcome a:hover {
+    color: #ffffff;
+}
+
+#menu {
+    position: relative;
+    float: left;
+    width: 240px;
+    border: 1px solid #dddddd;
+    background: #eeeeee;
+    height: auto;
+}
+
+#menu h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 5px;
+}
+
+#menu ul {
+    background: transparent url(/img/bgul.gif) repeat-x 0px 0px;
+    margin-bottom: 15px;
+}
+
+#menu ul li {
+    border: 1px solid #FAFAFA;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    padding: 3px 5px;
+}
+
+#content {
+    position: relative;
+    float: right;
+    width: 700px;
+    height: auto;
+}
+
+.index {
+    
+}
+
+#content table {
+    width: 100%;
+    background: #eeeeee url(/img/bgul.gif) repeat-x 0px 0px;
+    border: 1px solid #dddddd;
+}
+
+#content table th, .index table td {
+    padding: 3px;
+    border-bottom: 1px solid #fafafa;
+}
+
+.paging {
+    position: relative;
+    text-align: right;
+    font-size: 0.9em;
+    margin: 10px;
+}
+
+.paging div {
+    position: relative;
+    display: inline-block;
+}
+
+.paging span a {
+    display: inline-block;
+    border: 1px solid #3366CC;
+    padding: 2px 5px;
+    margin: 0px 2px;
+    background: transparent;
+}
+
+.paging span a:hover {
+    background: #dddddd;
+}
+
+.paging span.current {
+    display: inline-block;
+    border: 1px solid #3366CC;
+    padding: 2px 5px;
+    background: transparent;
+    font-weight: bold;
+}
+
+.view dl {
+
+}
+
+.view dl dt {
+    font-weight: bold;
+    color: #999;
+    
+}
+
+.view dl dd {
+    margin: 5px 0px 15px 0px;
+    border-bottom: 1px solid #dddddd;
+    font-size: 1.2em;
+    padding-left: 50px;
+}
+
+.form label {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.form div.input, .form select {
+    margin-bottom: 20px;
+}
+
+.form .text input, .form .password input, .form .textarea textarea, .form select {
+    width: 690px;
+    padding: 3px;
+    border: 1px solid #dddddd;
+}
+
+.form .textarea textarea {
+    border: 0px;
+    height: 400px;
+}
+
+#bottom {
+    position: relative;
+    clear: both;
+    margin-top: 40px;
+    border-top: 1px solid #dddddd;
+}

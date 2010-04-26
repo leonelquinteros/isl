@@ -1,0 +1,40 @@
+*, all {
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    border: 0px;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+body {
+    font-family: Arial, FreeSans, sans-serif;
+    font-size: 80%;
+    color: #444444;
+}
+
+a {
+    color: #DA3B3B;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000000;
+}
+
+h1 {
+    text-align: left;
+    font-size: 1.8em;
+    margin: 0px 0px 20px 0px;
+}
+
+h2 {
+    text-align: left;
+    font-size: 1.4em;
+    margin: 40px 0px 20px 0px;
+    color: #999999;
+}
