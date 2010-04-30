@@ -3,7 +3,6 @@ class Categoria extends AppModel {
 
     var $name = 'Categoria';
     var $validate = array(
-            'nombre' => array('notempty'),
             'url' => array('isUnique')
     );
 
@@ -12,28 +11,12 @@ class Categoria extends AppModel {
             'SubCategorias' => array(
                     'className' => 'Categoria',
                     'foreignKey' => 'id_padre',
-                    'dependent' => false,
-                    'conditions' => '',
-                    'fields' => '',
                     'order' => 'nombre',
-                    'limit' => '',
-                    'offset' => '',
-                    'exclusive' => '',
-                    'finderQuery' => '',
-                    'counterQuery' => ''
             ),
             'Software' => array(
                     'className' => 'Software',
                     'foreignKey' => 'id_categoria',
-                    'dependent' => false,
-                    'conditions' => '',
-                    'fields' => '',
                     'order' => 'nombre',
-                    'limit' => '',
-                    'offset' => '',
-                    'exclusive' => '',
-                    'finderQuery' => '',
-                    'counterQuery' => ''
             ),
     );
 
