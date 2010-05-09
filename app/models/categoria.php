@@ -40,4 +40,3 @@ class Categoria extends AppModel {
     }
 
 }
-?>

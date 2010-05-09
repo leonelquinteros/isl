@@ -19,6 +19,8 @@ class SiteController extends AppController {
     function categoria($url = '') {
         $categoria = $this->Categoria->findByUrl($url);
 
+        $this->set('categoria', $categoria);
+
         $categorias = $this->Categoria->find('all',
                         array('conditions' => array(
                                 'Categoria.id_padre' => $categoria['Categoria']['id'])
