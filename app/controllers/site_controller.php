@@ -14,6 +14,8 @@ class SiteController extends AppController {
     function index() {
         $novedades = $this->Software->find('all', array('order' => 'Software.id DESC', 'limit' => 20));
         $this->set('novedades', $novedades);
+
+        $this->set('breadcrumb', array( 'Inicio' => '/' ) );
     }
 
     function categoria($url = '') {
