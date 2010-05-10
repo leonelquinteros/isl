@@ -4,4 +4,7 @@ app/tmp/cache/views
 app/tmp/sessions
 app/tmp/tests
 app/tmp/logs
+.buildpath
+.project
+.settings
 

@@ -3,7 +3,12 @@ class Categoria extends AppModel {
 
     var $name = 'Categoria';
     var $validate = array(
-            'url' => array('isUnique')
+            'url' => array(
+            			'unique' => array(
+    							'rule' 		=> 'isUnique',
+    							'message' 	=> 'La URL ingresada ya se encuentra en uso, seleccione una diferente.'
+    					)
+    		)
     );
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -38,6 +43,25 @@ class Categoria extends AppModel {
             $this->data['Categoria']['url'] = $this->data['Categoria']['id'];
         }
     }
-
+	
+	function getBreadcrumb($id) {
+    	$breadcrumb = array();
+    	$cat = $this->findById($id);
+    	$breadcrumb[$cat['Categoria']['nombre']  . '<span id="Cat' . $cat['Categoria']['id'] . '"></span>'] = '/categoria/' . $cat['Categoria']['url'];
+    	
+    	if(!empty($cat['Categoria']['id_padre'])) {
+	    	$padre = $this->findById($cat['Categoria']['id_padre']);
+	    	$breadcrumb[$padre['Categoria']['nombre'] . '<span id="Cat' . $padre['Categoria']['id'] . '"></span>'] = '/categoria/' . $padre['Categoria']['url'];
+	    	 
+	    	while(!empty($padre['Categoria']['id_padre'])) {
+		    	$padre = $this->findById($padre['Categoria']['id_padre']);
+		    	$breadcrumb[$padre['Categoria']['nombre'] . '<span id="Cat' . $padre['Categoria']['id'] . '"></span>'] = '/categoria/' . $padre['Categoria']['url'];
+	    	}
+    	}
+    	
+    	$breadcrumb['Inicio'] = '/';
+    	
+    	return array_reverse($breadcrumb);
+    }
 }
 ?>

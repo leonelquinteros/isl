@@ -37,9 +37,11 @@ h1 {
 
 h2 {
     text-align: left;
-    font-size: 1.4em;
-    margin: 0px 0px 20px 0px;
-    color: #999999;
+    font-size: 1.2em;
+    margin: 0px 0px 10px 0px;
+    padding: 5px 0px 10px 0px;
+    color: #666666;
+    background: transparent url(/img/hbg.gif) repeat-x top left;
 }
 
 #wrapper {
@@ -76,10 +78,11 @@ h2 {
     top: 85px;
     left: 0px;
     font-size: 0.8em;
+    width: 960px;
 }
 
-#top #breadcrumb a {
-
+#top #breadcrumb a, #top #breadcrumb span {
+	display: inline;
 }
 
 #top #welcome {

@@ -2,10 +2,30 @@
 class Software extends AppModel {
     var $name = 'Software';
     var $validate = array(
-            'nombre' => array('notempty'),
-            'url' => array('isUnique'),
-            'website_url' => array('url'),
-            'download_url' => array('url'),
+            'nombre' => array(
+            				'notempty' => array(
+    							'rule' 		=> 'notempty',
+    							'message' 	=> 'Debe ingresar un nombre.'
+    						)
+    				),
+            'url' => array(
+            				'unique' => array(
+            					'rule'		=> 'isUnique',
+            					'message' 	=> 'La URL ingresada ya se encuentra en uso, seleccione una diferente.'
+    						)
+    				),
+            'website_url' => array(
+            				'url' => array(
+    							'rule' 		=> 'url',
+    							'message'	=> 'La URL ingresada no es una URL'
+    						)
+    				),
+            'download_url' => array(
+            				'url' => array(
+    							'rule' 		=> 'url',
+    							'message'	=> 'La URL ingresada no es una URL'
+    						)
+    				),
             'id_categoria' => array('numeric')
     );
 
@@ -31,5 +51,26 @@ class Software extends AppModel {
             $this->data['Software']['url'] = $this->data['Software']['id'];
         }
     }
+    
+    function getBreadcrumb($id) {
+    	$breadcrumb = array();
+    	$software = $this->findById($id);
+    	$breadcrumb[$software['Software']['nombre']] = '/' . $software['Software']['url'];
+    	
+    	App::import('Model', 'Categoria');
+    	$categoria = new Categoria();
+    	
+    	$padre = $categoria->findById($software['Software']['id_categoria']);
+    	
+    	$breadcrumb[$padre['Categoria']['nombre'] . '<span id="Cat' . $padre['Categoria']['id'] . '"></span>'] = '/categoria/' . $padre['Categoria']['url'];
+    	 
+    	while(!empty($padre['Categoria']['id_padre'])) {
+	    	$padre = $categoria->findById($padre['Categoria']['id_padre']);
+	    	$breadcrumb[$padre['Categoria']['nombre'] . '<span id="Cat' . $padre['Categoria']['id'] . '"></span>'] = '/categoria/' . $padre['Categoria']['url'];
+    	}
+    	
+    	$breadcrumb['Inicio'] = '/';
+    	
+    	return array_reverse($breadcrumb);
+    }
 }
-?>

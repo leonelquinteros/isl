@@ -215,6 +215,11 @@ h2 {
     height: 400px;
 }
 
+.form .error-message {
+	color: red;
+	font-weight: bold;	
+}
+
 #bottom {
     position: relative;
     clear: both;

@@ -8,17 +8,20 @@ class SiteController extends AppController {
     {
         $this->layout = 'default';
 
-        $this->set('categorias', $this->Categoria->find('all', array('order' => 'Categoria.nombre')));
+        $this->set('categorias', $this->Categoria->find('all', array('conditions' => array('Categoria.id_padre' => '0'), 'order' => 'Categoria.nombre')));
     }
 
     function index() {
         $novedades = $this->Software->find('all', array('order' => 'Software.id DESC', 'limit' => 20));
         $this->set('novedades', $novedades);
+        
+        $this->set('breadcrumb', array( 'Inicio' => '/') );
     }
 
     function categoria($url = '') {
         $categoria = $this->Categoria->findByUrl($url);
-
+		$this->set('categoria', $categoria);
+        
         $categorias = $this->Categoria->find('all',
                         array('conditions' => array(
                                 'Categoria.id_padre' => $categoria['Categoria']['id'])
@@ -32,6 +35,8 @@ class SiteController extends AppController {
                         )
                     );
         $this->set('software', $software);
+        
+        $this->set('breadcrumb', $this->Categoria->getBreadcrumb($categoria['Categoria']['id']));
     }
 
     function ver($url = '') {
@@ -46,6 +51,8 @@ class SiteController extends AppController {
             {
                 return $this->redirect('/notfound');
             }
+            
+            $this->set('breadcrumb', $this->Software->getBreadcrumb($software['Software']['id']));
         }
         else
         {

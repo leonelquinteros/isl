@@ -1,4 +1,4 @@
-<h1>Categoria</h1>
+<h1><?php echo $categoria['Categoria']['nombre']; ?></h1>
 
 <div id="menu">
     <?php echo $this->element('menu'); ?>

@@ -82,8 +82,8 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'Mko0@wsx',
+		'login' => 'leo',
+		'password' => 'zxop1234',
 		'database' => 'isl',
 		'prefix' => '',
 	);
@@ -92,8 +92,8 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'Mko0@wsx',
+		'login' => 'leo',
+		'password' => 'zxop1234',
 		'database' => 'isl',
 		'prefix' => '',
 	);

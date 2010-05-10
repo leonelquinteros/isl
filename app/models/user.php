@@ -2,7 +2,12 @@
 class User extends AppModel {
     var $name = 'User';
     var $validate = array(
-            'username' => array('isUnique'),
+            'username' => array(
+            				'unique' => array(
+            					'rule'		=> 'isUnique',
+            					'message' 	=> 'El nombre de usuario ya existe, seleccione uno diferente.'
+    						)
+    				),
             'password' => array('notempty'),
     );
 
