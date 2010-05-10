@@ -14,14 +14,14 @@ class SiteController extends AppController {
     function index() {
         $novedades = $this->Software->find('all', array('order' => 'Software.id DESC', 'limit' => 20));
         $this->set('novedades', $novedades);
-        
-        $this->set('breadcrumb', array( 'Inicio' => '/') );
+
+        $this->set('breadcrumb', array( 'Inicio' => '/' ) );
     }
 
     function categoria($url = '') {
         $categoria = $this->Categoria->findByUrl($url);
-		$this->set('categoria', $categoria);
-        
+        $this->set('categoria', $categoria);
+
         $categorias = $this->Categoria->find('all',
                         array('conditions' => array(
                                 'Categoria.id_padre' => $categoria['Categoria']['id'])

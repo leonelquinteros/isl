@@ -64,4 +64,3 @@ class Categoria extends AppModel {
     	return array_reverse($breadcrumb);
     }
 }
-?>
