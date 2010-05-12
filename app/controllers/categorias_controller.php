@@ -2,7 +2,7 @@
 class CategoriasController extends AppController {
 
     var $name = 'Categorias';
-    var $helpers = array('Html', 'Form');
+    var $helpers = array('Html', 'Form', 'Cat');
     var $components = array('Auth');
     
     var $paginate = array(  'limit' => 20,
@@ -16,7 +16,7 @@ class CategoriasController extends AppController {
     function admin_index() {
         $this->set('categorias', $this->paginate());
 
-        $this->set('breadcrumb', array( 'Admin' => '/adminpanel/', 'Categor&iacute;as' => '/admin/categorias') );
+        $this->set('breadcrumb', array( 'Admin' => '/admin/', 'Categor&iacute;as' => '/admin/categorias') );
     }
 
     function admin_view($id = null) {
@@ -26,7 +26,7 @@ class CategoriasController extends AppController {
         }
         $this->set('categoria', $this->Categoria->read(null, $id));
 
-        $this->set('breadcrumb', array( 'Admin' => '/adminpanel/',
+        $this->set('breadcrumb', array( 'Admin' => '/admin/',
                                         'Categorias' => '/admin/categorias',
                                         'Ver' => '/admin/categorias/view/' . $id
                                         )
@@ -48,17 +48,25 @@ class CategoriasController extends AppController {
         }
 
         $this->Categoria->recursive = 0;
-        $this->set('categorias',
-            $this->Categoria->find(
-                'list',
-                array(
-                    'fields' => array('Categoria.nombre'),
-                    'order' => array('Categoria.nombre')
-                )
-            )
+        $categorias = $this->Categoria->find(
+                    'list',
+                    array(
+                        'fields' => array('Categoria.nombre'),
+                        'order' => array('Categoria.nombre')
+                    )
         );
 
-        $this->set('breadcrumb', array( 'Admin' => '/adminpanel/',
+        $catData = array();
+        
+        foreach($categorias as $key => $value) {
+            $catData[$key] = $this->Categoria->getFullName($key);
+        }
+
+        asort($catData);
+
+        $this->set('categorias', $catData);
+
+        $this->set('breadcrumb', array( 'Admin' => '/admin/',
                                         'Categorias' => '/admin/categorias',
                                         'Nueva Categoria' => '/admin/categorias/add/'
                                         )
@@ -83,17 +91,26 @@ class CategoriasController extends AppController {
         }
 
         $this->Categoria->recursive = 0;
-        $this->set('categorias',
-            $this->Categoria->find(
-                'list',
-                array(
-                    'fields' => array('Categoria.nombre'),
-                    'order' => array('Categoria.nombre')
-                )
-            )
+        $this->Categoria->recursive = 0;
+        $categorias = $this->Categoria->find(
+                    'list',
+                    array(
+                        'fields' => array('Categoria.nombre'),
+                        'order' => array('Categoria.nombre')
+                    )
         );
 
-        $this->set('breadcrumb', array( 'Admin' => '/adminpanel/',
+        $catData = array();
+
+        foreach($categorias as $key => $value) {
+            $catData[$key] = $this->Categoria->getFullName($key);
+        }
+
+        asort($catData);
+
+        $this->set('categorias', $catData);
+
+        $this->set('breadcrumb', array( 'Admin' => '/admin/',
                                         'Categorias' => '/admin/categorias',
                                         'Editar' => '/admin/categorias/edit/' . $id
                                         )

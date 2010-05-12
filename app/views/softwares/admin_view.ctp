@@ -44,7 +44,19 @@
         </dd>
         <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Categoria'); ?></dt>
         <dd<?php if ($i++ % 2 == 0) echo $class;?>>
-                <?php echo $html->link($software['Categoria']['nombre'], array('controller' => 'categorias', 'action' => 'view', $software['Categoria']['id'])); ?>
+                <?php
+                echo $html->link(
+                    $cat->getFullName($software['Software']['id_categoria']),
+                    '',
+                    array(
+                        'controller' => 'categorias',
+                        'action' => 'view',
+                        $software['Categoria']['id'],   
+                    ),
+                    false,
+                    false
+                );
+                ?>
                 &nbsp;
         </dd>
     </dl>

@@ -2,7 +2,7 @@
 class SiteController extends AppController {
     var $name = 'Site';
     var $uses = array('Software', 'Categoria');
-    var $helpers = array('Html');
+    var $helpers = array('Html', 'Cat');
 
     function beforeFilter()
     {

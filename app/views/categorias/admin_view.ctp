@@ -27,9 +27,9 @@
             <?php echo $categoria['Categoria']['url']; ?>
             &nbsp;
         </dd>
-        <dt>Padre</dt>
+        <dt>Ruta</dt>
         <dd>
-            <?php echo $categoria['Padre']['nombre']; ?>
+            <?php echo $cat->getFullName($categoria['Categoria']['id']); ?>
             &nbsp;
         </dd>
     </dl>
@@ -56,9 +56,9 @@
                         <td><?php echo $subCategorias['id'];?></td>
                         <td><?php echo $subCategorias['nombre'];?></td>
                         <td class="actions">
-                                <?php echo $html->link(__('View', true), array('controller' => 'categorias', 'action' => 'view', $subCategorias['id'])); ?>
-                                <?php echo $html->link(__('Edit', true), array('controller' => 'categorias', 'action' => 'edit', $subCategorias['id'])); ?>
-                                <?php echo $html->link(__('Delete', true), array('controller' => 'categorias', 'action' => 'delete', $subCategorias['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $subCategorias['id'])); ?>
+                                <?php echo $html->link(__('Ver', true), array('controller' => 'categorias', 'action' => 'view', $subCategorias['id'])); ?>
+                                <?php echo $html->link(__('Editar', true), array('controller' => 'categorias', 'action' => 'edit', $subCategorias['id'])); ?>
+                                <?php echo $html->link(__('Eliminar', true), array('controller' => 'categorias', 'action' => 'delete', $subCategorias['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $subCategorias['id'])); ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -83,9 +83,9 @@
                         <td><?php echo $software['id'];?></td>
                         <td><?php echo $software['nombre'];?></td>
                         <td class="actions">
-                                <?php echo $html->link(__('View', true), array('controller' => 'softwares', 'action' => 'view', $software['id'])); ?>
-                                <?php echo $html->link(__('Edit', true), array('controller' => 'softwares', 'action' => 'edit', $software['id'])); ?>
-                                <?php echo $html->link(__('Delete', true), array('controller' => 'softwares', 'action' => 'delete', $software['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $software['nombre'])); ?>
+                                <?php echo $html->link(__('Ver', true), array('controller' => 'softwares', 'action' => 'view', $software['id'])); ?>
+                                <?php echo $html->link(__('Editar', true), array('controller' => 'softwares', 'action' => 'edit', $software['id'])); ?>
+                                <?php echo $html->link(__('Eliminar', true), array('controller' => 'softwares', 'action' => 'delete', $software['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $software['nombre'])); ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

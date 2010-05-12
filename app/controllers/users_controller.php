@@ -11,7 +11,7 @@ class UsersController extends AppController {
 
     function beforeFilter() {
         $this->layout = 'admin';
-
+        
         $this->Auth->authenticate = ClassRegistry::init('User');
     }
 
@@ -20,6 +20,7 @@ class UsersController extends AppController {
     * for login, so you can leave this function blank.
     */
     function admin_login() {
+        
     }
 
     function admin_logout() {

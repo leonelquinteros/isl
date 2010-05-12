@@ -45,6 +45,9 @@ class Categoria extends AppModel {
     }
 	
 	function getBreadcrumb($id) {
+        $recursive = $this->recursive;
+        $this->recursive = -1;
+
     	$breadcrumb = array();
     	$cat = $this->findById($id);
     	$breadcrumb[$cat['Categoria']['nombre']  . '<span id="Cat' . $cat['Categoria']['id'] . '"></span>'] = '/categoria/' . $cat['Categoria']['url'];
@@ -60,7 +63,19 @@ class Categoria extends AppModel {
     	}
     	
     	$breadcrumb['Inicio'] = '/';
-    	
+
+        $this->recursive = $recursive;
     	return array_reverse($breadcrumb);
+    }
+
+    function getFullName($id, $separator = ' &raquo; ') {
+        $aPath = array_keys( $this->getBreadcrumb($id) );
+        array_shift($aPath);
+
+        if(is_null($separator)) {
+            $separator = ' &raquo; ';
+        }
+
+        return implode($separator, $aPath);
     }
 }

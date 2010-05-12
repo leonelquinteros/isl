@@ -16,7 +16,7 @@ $paginator->options(array('url' => array('admin' => true)));
             <th><?php echo $paginator->sort('Website URL','website_url');?></th>
             <th><?php echo $paginator->sort('Download URL','download_url');?></th>
             <th><?php echo $paginator->sort('Categoria', 'Categoria.nombre');?></th>
-            <th class="actions">Operar</th>
+            <th class="actions">Acciones</th>
         </tr>
         <?php
         $i = 0;

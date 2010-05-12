@@ -10,7 +10,7 @@
             echo $form->input('nombre');
             echo $form->input('url');
             echo "<label>Categor&iacute;a padre</label>\n";
-            echo $form->select('id_padre', $categorias);
+            echo $form->select('id_padre', $categorias, null, array('escape' => false));
         ?>
     <?php echo $form->end('Guardar');?>
 </div>

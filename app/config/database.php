@@ -82,20 +82,11 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'leo',
-		'password' => 'zxop1234',
+		'login' => 'root',
+		'password' => 'Mko0@wsx',
 		'database' => 'isl',
 		'prefix' => '',
 	);
 
-	var $test = array(
-		'driver' => 'mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'leo',
-		'password' => 'zxop1234',
-		'database' => 'isl',
-		'prefix' => '',
-	);
 }
 ?>

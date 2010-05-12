@@ -17,7 +17,7 @@
     echo $form->input('nombre');
     echo $form->input('url');
     echo "<label>Categor&iacute;a</label>\n";
-    echo $form->select('id_categoria', $categorias);
+    echo $form->select('id_categoria', $categorias, null, array('escape' => false));
     echo $form->input('descripcion');
     echo "<br />";
     echo $form->input('website_url');

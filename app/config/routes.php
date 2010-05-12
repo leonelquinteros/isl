@@ -29,8 +29,6 @@
 
 Router::connect('/admin', array('controller' => 'admin_index', 'action' => 'index', 'admin' => true));
 
-Router::connect('/admin/:controller/:action/*', array(
-    'action' => null, 'prefix' => 'admin', 'admin' => true
-)); 
+Router::connect('/admin/:controller/:action/*', array('action' => null, 'prefix' => 'admin', 'admin' => true)); 
 
 Router::connect('/:action/*', array('controller' => 'site'));

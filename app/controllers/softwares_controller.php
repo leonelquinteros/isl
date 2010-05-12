@@ -2,7 +2,7 @@
 class SoftwaresController extends AppController {
 
     var $name = 'Softwares';
-    var $helpers = array('Html', 'Form');
+    var $helpers = array('Html', 'Form', 'Cat');
     var $uses = array('Software', 'Categoria');
     var $components = array('Auth');
     
@@ -16,7 +16,7 @@ class SoftwaresController extends AppController {
 
     function admin_index() {
         $this->set('softwares', $this->paginate());
-        $this->set('breadcrumb', array('Admin' => '/adminpanel', 'Softwares' => '/admin/softwares'));
+        $this->set('breadcrumb', array('Admin' => '/admin', 'Softwares' => '/admin/softwares'));
     }
 
     function admin_view($id = null) {
@@ -25,7 +25,7 @@ class SoftwaresController extends AppController {
                     $this->redirect(array('action' => 'index'));
             }
             $this->set('software', $this->Software->read(null, $id));
-            $this->set('breadcrumb', array( 'Admin' => '/adminpanel/',
+            $this->set('breadcrumb', array( 'Admin' => '/admin/',
                                             'Softwares' => '/admin/softwares',
                                             'Ver' => '/admin/softwares/view/' . $id
                                         )
@@ -43,22 +43,30 @@ class SoftwaresController extends AppController {
                 }
         }
 
-        $this->set('breadcrumb', array( 'Admin' => '/adminpanel/',
+        $this->set('breadcrumb', array( 'Admin' => '/admin/',
                                         'Softwares' => '/admin/softwares',
                                         'Agregar' => '/admin/softwares/add/'
                                     )
                    );
 
         $this->Categoria->recursive = 0;
-        $this->set('categorias',
-                $this->Categoria->find(
-                        'list',
-                        array(
-                            'fields' => array('Categoria.nombre'),
-                            'order' => array('Categoria.nombre')
-                        )
-                )
+        $categorias = $this->Categoria->find(
+                    'list',
+                    array(
+                        'fields' => array('Categoria.nombre'),
+                        'order' => array('Categoria.nombre')
+                    )
         );
+
+        $catData = array();
+
+        foreach($categorias as $key => $value) {
+            $catData[$key] = $this->Categoria->getFullName($key);
+        }
+
+        asort($catData);
+
+        $this->set('categorias', $catData);
 
         $this->set('headerElements', array('admin_softwares_tinymce_header'));
     }
@@ -80,14 +88,30 @@ class SoftwaresController extends AppController {
             $this->data = $this->Software->read(null, $id);
         }
 
-        $this->set('breadcrumb', array( 'Admin' => '/adminpanel/',
+        $this->set('breadcrumb', array( 'Admin' => '/admin/',
                                         'Softwares' => '/admin/softwares',
                                         'Editar' => '/admin/softwares/edit/' . $id
                                     )
                    );
 
         $this->Categoria->recursive = 0;
-        $this->set('categorias', $this->Categoria->find('list',array('fields' => array('Categoria.nombre'), 'order' => array('Categoria.nombre')) ) );
+        $categorias = $this->Categoria->find(
+                    'list',
+                    array(
+                        'fields' => array('Categoria.nombre'),
+                        'order' => array('Categoria.nombre')
+                    )
+        );
+
+        $catData = array();
+
+        foreach($categorias as $key => $value) {
+            $catData[$key] = $this->Categoria->getFullName($key);
+        }
+
+        asort($catData);
+
+        $this->set('categorias', $catData);
 
         $this->set('headerElements', array('admin_softwares_tinymce_header'));
     }

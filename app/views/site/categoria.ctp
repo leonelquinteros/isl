@@ -8,9 +8,11 @@
     <h2>Sub-Categorias</h2>
 
     <?php
-    foreach($subCategorias as $cat) {
+    foreach($subCategorias as $categ) {
         ?>
-        <a style="font-size:1.2em;margin-bottom:10px;display:block;" href="/categoria/<?php echo $cat['Categoria']['url'] ?>"><?php echo $cat['Categoria']['nombre']; ?></a>
+        <a style="font-size:1.1em;margin-bottom:10px;display:block;" href="/categoria/<?php echo $categ['Categoria']['url'] ?>">
+            <?php echo $cat->getFullName($categ['Categoria']['id']); ?>
+        </a>
         <?php
     }
     ?>
@@ -22,7 +24,7 @@
     <?php
     foreach($software as $soft) {
         ?>
-        <a style="font-size:1.2em;margin-bottom:10px;display:block;" href="/ver/<?php echo $soft['Software']['url'] ?>"><?php echo $soft['Software']['nombre']; ?></a>
+        <a style="font-size:1.1em;margin-bottom:10px;display:block;" href="/ver/<?php echo $soft['Software']['url'] ?>"><?php echo $soft['Software']['nombre']; ?></a>
         <?php
     }
     ?>
